@@ -6,7 +6,8 @@ import os
 def explore_data():
     try:
         # Exact file path
-        file_path = '../data/Tehran-Houses-DIVAR.csv'
+        BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+        file_path = os.path.join(BASE_DIR, "../data/Tehran-Houses-DIVAR.csv")
         
         print(f"🔍 Searching for file at: {file_path}")
         print(f"📁 Current directory: {os.getcwd()}")
@@ -48,7 +49,7 @@ def explore_data():
 if __name__ == "__main__":
     print("🚀 Starting data analysis...")
     df = explore_data()
-    
+    BASE_DIR = os.path.dirname(os.path.abspath(__file__))
     if df is not None:
         print("\n✅ Data analysis completed successfully!")
         print(f"📊 Data dimensions: {df.shape}")
@@ -66,7 +67,7 @@ if __name__ == "__main__":
                 plt.ylabel(numeric_columns[1])
                 plt.title(f'{numeric_columns[1]} vs {numeric_columns[0]}')
                 plt.grid(True, alpha=0.3)
-                plt.savefig('../data/first_analysis_plot.png')
+                plt.savefig(os.path.join(BASE_DIR,'../data/first_analysis_plot.png'))
                 plt.show()
                 print("📊 Basic visualization created and saved!")
                 
